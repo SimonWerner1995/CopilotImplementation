@@ -1,0 +1,89 @@
+/* index.html */
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Willkommen auf meiner Website</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Über uns</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <p>Dies ist die Startseite meiner einfachen Website.</p>
+    </main>
+    
+    <div id="chatbot-container">
+        <button id="chat-toggle">💬</button>
+        <div id="chat-window">
+            <script src="https://web.powerva.microsoft.com/environments/<DEIN_ENV>/bots/<DEIN_BOT_ID>/webchat/webchat.js"></script>
+            <script>
+                window.addEventListener("DOMContentLoaded", function () {
+                    var botConfig = {
+                        secret: "<DEIN_SECRET>",
+                        locale: "de-DE"
+                    };
+                    window.WebChat.renderWebChat(botConfig, document.getElementById("chat-window"));
+                });
+            </script>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 10px;
+}
+
+/* Chatbot Styling */
+#chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    text-align: right;
+}
+#chat-toggle {
+    background: #0078d4;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#chat-window {
+    display: none;
+    width: 300px;
+    height: 400px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* script.js */
+document.getElementById("chat-toggle").addEventListener("click", function() {
+    var chatWindow = document.getElementById("chat-window");
+    chatWindow.style.display = chatWindow.style.display === "none" ? "block" : "none";
+});
